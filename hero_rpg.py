@@ -4,6 +4,35 @@
 # 2. do nothing - in which case the goblin will attack him anyway
 # 3. flee
 
+
+# DICTIONARIES
+hero = {
+  'name' = 'Hero',
+  'health' = 9,
+  'power' = 4,
+}
+
+goblin = {
+  'name' = 'Goblin',
+  'health' = 7,
+  'power' = 3
+}
+
+#!CLASSES
+class Hero:
+  def __init__(hero, name, health, power):
+    hero.name = name,
+    hero.health = health,
+    hero.power = power,
+    
+class Goblin:
+  def __init__(goblin, name, health, power):
+    goblin.name = name,
+    goblin.health = health,
+    goblin.power = power,  
+    
+    
+    
 def main():
     hero_health = 10
     hero_power = 5
@@ -43,3 +72,8 @@ def main():
 
 main()
 
+# def greet(self, other_person):
+#  return(f'Hello {other_person.name}, I am {self.name}!')
+      
+# print(sonny.greet(jordan))      
+# print(jordan.greet(sonny))
