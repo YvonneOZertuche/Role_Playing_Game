@@ -1,3 +1,5 @@
+import random()
+
 class Character:
     def __init__(self, health, power):
       self.health = health
@@ -77,8 +79,13 @@ while goblin.alive() and hero.alive():
 
 
 # # #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# # def greet(self, other_person):
-# #  return(f'Hello {other_person.name}, I am {self.name}!')
-      
-# # print(sonny.greet(jordan))      
-# # print(jordan.greet(sonny))
+def doublePointsAttack(self,enemy):
+        power_int = random.randint(1, 5)
+        if power_int == 5:
+            enemy.health -= self.power * 2
+            print("\nDouble damage points!")
+        else:
+            enemy.health -= self.power
+            print(f"{enemy.name} receives {self.power} damage points from {self.name} .")
+            if enemy.health <= 0:
+                print(f"The {enemy.name} is dead.")
