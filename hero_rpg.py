@@ -1,43 +1,46 @@
-class Hero:
+class Character:
+    def __init__(self, health, power):
+      self.health = health
+      self.power = power
+             
+    def alive(self):
+        if self.health > 0:
+            return True
+        else:
+            return False 
+               
+class Hero(Character):
     def __init__(self, health, power): 
-        self.health = health
-        self.power = power
+        super(Hero, self).__init__(health, power)
         
     def attack(self, enemy):  
         # Hero attacks Goblin
         enemy.health -= self.power  
         
-    def alive(self):
-        if self.health > 0:
-            return True
-        else:
-            return False    
+    def print_status(self):    
+        print(f'Hero has {self.health} health and {self.power} power.')
         
-class Goblin:
+class Goblin(Character):
     def __init__(self, health, power):    
-        self.health = health        
-        self.power = power
+       super(Goblin,self).__init__(health,power)
         
     def attack(self, enemy):  
         # Goblin attacks Hero
         enemy.health -= self.power    
-    
-    def alive(self):
-        if self.health > 0:
-            return True
-        else:
-            return False     
+        
+    def print_status(self):
+        print(f'The goblin has {self.health} health and {self.power} power.')
+             
         
 hero = Hero(10, 5)
 goblin = Goblin(6, 2)
-# 
 
 
 
 while goblin.alive() and hero.alive():
     print(' ')
-    print(f'Hero has {hero.health} health and {hero.power} power.')
-    print(f'The goblin has {goblin.health} health and {goblin.power} power.')
+    hero.print_status()
+    goblin.print_status()
     print()
     print("What do you want to do?")
     print("1. fight goblin")
@@ -48,7 +51,7 @@ while goblin.alive() and hero.alive():
     raw_input = input()
     if raw_input == "1" :
         #TODO Hero attacks Goblin
-        hero.attack(goblin)
+        hero.attack(goblin) 
         print(f'Hero does {hero.power} damage to the goblin.')
     if not goblin.alive():
         print("The goblin is dead.")
