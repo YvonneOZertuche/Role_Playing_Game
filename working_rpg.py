@@ -20,8 +20,7 @@ class Character:
 #&----------Hero Class----------#
 class Hero(Character):
   def __init__ (self, health, power):
-    self.health = health
-    self.power = power
+    super(Hero, self).__init__(health, power)
     
   def attack(self, enemy):
     #Hero attacks goblin
@@ -41,9 +40,8 @@ class Hero(Character):
  #&----------Goblin Class----------#   
 class Goblin(Character):
   def __init__(self, health, power):
-    self.health = health
-    self.power = power    
-    
+    super(Goblin, self).__init__(health, power)
+  
   def attack(self, enemy):
     #Goblin attacks hero
       enemy.health -= self.power
