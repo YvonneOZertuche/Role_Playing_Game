@@ -62,33 +62,57 @@ class Goblin(Character):
     self.character_name = "Goblin"
     super(Goblin, self).__init__(health, power)
     
-          
+  def rounds(self, hero):    
+    round = hero.health/self.power
+    
+    
+#&-----------Zombie Class----------#
+class Zombie:
+  def __init__(self, name, health, power):
+    self.name = name
+    self.health = health
+    self.power = power
+    
+ print(round)         
 def main():
   
     hero = Hero(10, 5)
     goblin = Goblin( 6, 2)   
+    zombie = Zombie("Brains",10000,10)
     
     while goblin.alive() and hero.alive(): 
         print()
         hero.print_status(goblin)
         goblin.print_status(hero)
-             
+        print()     
         print("What do you want to do?")
-        print("1. fight goblin")
-        print("2. do nothing")
-        print("3. flee")
+        print("1. Fight")
+        print("2. Do nothing")
+        print("3. Flee")
         print("> ", end=' ')
         
         raw_input = input()        
         if raw_input == "1":
           hero.attack(goblin)            
         elif raw_input == "2":
-            pass
+          print("Really?!!")
+          goblin.round(hero)
+          count = 0       
+          for i in round: 
+              print("Don't just stand there...")
+              count +=1 
+                
         elif raw_input == "3":
-            print("Goodbye.")
+            print("Goodbye Chicken!")
             break
         else:
-            print(f"Invalid input {raw_input}")
+            print(f"You didn't select a 1, 2 or 3")
+            answer = input("Play again...Yes?")
+            if answer.lower() == 'y':
+              main()
+            else:
+              print("See you on the flip side - Bye!")  
+            break
         
         #enemy attacks hero    
         if goblin.alive() == True:  
