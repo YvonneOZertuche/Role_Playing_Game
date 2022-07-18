@@ -5,36 +5,32 @@ class Character:
       self.health = health
       self.power = power
                              
-    # def attack(self, enemy):         
-    #     enemy.health -= self.power  
-    #     # Hero attacks Goblin
-    #     if (self.character_name == "hero"):
-    #         print(f'You do {self.power} damage points to the {enemy.character_name}.') 
-    #  # Goblin attacks Hero      
-    #     else:
-    #         if (self.character_name == "goblin"):             
-    #             print(f'The {enemy.character_name} does {self.power} damage points to you.')     
-                       
-    # def alive(self):
-    #     if self.health > 0:
-    #         return True
-    #     else:
-    #         return False 
-                           
-class Hero(Character):
-    def __init__(self, health, power): 
-        self.character_name = "Hero"
-        super(Hero, self).__init__(health, power)
-      
     def attack(self, enemy):         
         enemy.health -= self.power  
-        print(f'You do {self.power} damage points to the {enemy.character_name}.')     
-            
+        # Hero attacks Goblin
+        if (self.character_name == "Hero"):
+            print(f'You do {self.power} damage points to the {enemy.character_name}.') 
+     # Goblin attacks Hero      
+        elif(self.character_name == "Goblin"):             
+            print(f'The {self.character_name} does {self.power} damage points to you.')     
+                       
     def alive(self):
         if self.health > 0:
             return True
         else:
             return False 
+                           
+class Hero(Character):
+    def __init__(self, health, power): 
+        self.character_name = "Hero"
+        super(Hero, self).__init__(health, power)
+       
+            
+    # def alive(self):
+    #     if self.health > 0:
+    #         return True
+    #     else:
+    #         return False 
         
     def print_status(self):
         print(f'The {self.character_name} has {self.health} power points and {self.power} health points.') 
@@ -45,18 +41,18 @@ class Goblin(Character):
         self.character_name = "Goblin"  
         super(Goblin,self).__init__(health,power)
 
-    def attack(self, enemy):         
-        enemy.health -= self.power  
-        print(f'You do {self.power} damage points to the {enemy.character_name}.')         
+    # def attack(self, enemy):         
+    #     enemy.health -= self.power  
+    #     print(f'You do {self.power} damage points to the {enemy.character_name}.')         
         
     def print_status(self):
         print(f'The {self.character_name} has {self.health} power points and {self.power} health points.') 
         
-    def alive(self):
-        if self.health > 0:
-            return True        
-        else:
-            return False
+    # def alive(self):
+    #     if self.health > 0:
+    #         return True        
+    #     else:
+    #         return False
         
 hero = Hero(10, 5)
 goblin = Goblin(6, 2 )
