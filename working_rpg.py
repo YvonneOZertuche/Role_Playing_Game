@@ -4,7 +4,21 @@
 # 2. do nothing - in which case the goblin will attack him anyway
 # 3. flee
 
-class Hero:
+#&----------Character Class----------#
+class Character:
+  def __init__(self, health, power):
+    self.health = health
+    self.power = power
+    
+  def alive(self):
+    if self.health > 0:
+      return True
+    else:
+      return False    
+
+
+#&----------Hero Class----------#
+class Hero(Character):
   def __init__ (self, health, power):
     self.health = health
     self.power = power
@@ -13,21 +27,19 @@ class Hero:
     #Hero attacks goblin
     enemy.health -= self.power
     print(f'You do {self.power} damage to the goblin.')  
-
     
-    
-  def alive(self):
-    if self.health > 0:
-      return True
-    else:
-      return False
+  # def alive(self):
+  #   if self.health > 0:
+  #     return True
+  #   else:
+  #     return False
     
   def print_status(self, enemy): 
     if enemy.health <= 0:
       print("The enemy is dead.")
         
-    
-class Goblin:
+ #&----------Goblin Class----------#   
+class Goblin(Character):
   def __init__(self, health, power):
     self.health = health
     self.power = power    
@@ -37,12 +49,11 @@ class Goblin:
       enemy.health -= self.power
       print(f"The goblin does {self.power} damage to you.")
       
-     
-  def alive(self):
-    if self.health > 0:
-      return True
-    else:
-      return False
+  # def alive(self):
+  #   if self.health > 0:
+  #     return True
+  #   else:
+  #     return False
     
   def print_status(self, enemy): 
     if enemy.health <= 0:
@@ -54,15 +65,7 @@ hero = Hero(10, 5)
 goblin = Goblin(6, 2)
 
 
-
-
-
-
-
-
-
-
-
+#&----------Logic----------
 def main():
     while goblin.alive() and hero.alive(): 
         print()
