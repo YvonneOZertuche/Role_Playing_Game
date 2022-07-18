@@ -4,6 +4,30 @@
 # 2. do nothing - in which case the goblin will attack him anyway
 # 3. flee
 
+class Hero:
+  def __init__ (self, health, power):
+    self.health = health
+    self.power = power
+    
+class Goblin:
+  def __init__(self, health, power):
+    self.health = health
+    self.power = power    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 def main():
     hero_health = 10
     hero_power = 5
@@ -21,7 +45,7 @@ def main():
         print("> ", end=' ')
         raw_input = input()
         if raw_input == "1":
-            # Hero attacks goblin
+            # Hero attacks goblinpy
             goblin_health -= hero_power
             print("You do {} damage to the goblin.".format(hero_power))
             if goblin_health <= 0:
