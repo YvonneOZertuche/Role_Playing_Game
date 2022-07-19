@@ -18,10 +18,11 @@ class Character:
       return False    
   
   def attack(self, enemy):
+    # if enemy.character_name != "Zombie":
     enemy.health -= self.power   
     if (self.character_name == "Hero"):
       print(f'You do {self.power} damage points to the {enemy.character_name}.')  
-    elif(self.character_name == "Goblin"):         
+    elif(self.character_name == "Goblin"):          
       print(f"The {self.character_name} does {self.power} damage to you.")
     
   def print_status(self, enemy): 
@@ -29,6 +30,25 @@ class Character:
       print(f'You have {self.health} power points and {self.power} health points.') 
     elif(self.character_name == "Goblin"):  
       print(f"The {self.character_name} has {self.health} power point(s) and {self.power} health points.") 
+      
+  # def retorts(self, enemy):
+  #   number = 0
+    
+  #   for number in retorts:
+  #     number = (int(hero.health/enemy.power))
+  #     if number == 1:
+  #         print("Are you sure?")              
+  #     elif number == 2 : 
+  #         print("Don't just stand there...")
+  #     elif number == 3:
+  #         print("'You're killing me Smalls!'")   
+  #     elif number == 4:
+  #         print("The end is near.")  
+  #     elif number == 5:
+  #         print("RIP")   
+  #     number +=1
+  #     break     
+              
    
                 
 
@@ -39,8 +59,31 @@ class Hero(Character):
     self.character_name = "Hero"
     super(Hero, self).__init__(health, power)
     
+  def retorts(goblin):
+    number = 0
+    for i  in range(number):
+      number = (int(hero.health/enemy.power))
+      if number == 1:
+          
+          print("Are you sure?")   
+          number = i           
+      elif number == 2 : 
+          print("Don't just stand there...")
+          number = i
+      elif number == 3:
+          print("'You're killing me Smalls!'")   
+          number = i
+      elif number == 4:
+          print("The end is near.")  
+          number = i
+      elif number == 5:
+         number = i
+         print("RIP")   
+    number +=1
+         
+              
   # def attack(self, enemy):
-  #   #Hero attacks Goblin
+  #   #Hero attacks enemy
   #   enemy.health -= self.power
   #   print(f'You do {self.power} damage to the enemy.')  
     
@@ -62,31 +105,30 @@ class Goblin(Character):
     self.character_name = "Goblin"
     super(Goblin, self).__init__(health, power)
     
-  def rounds(self, hero):    
-    round = hero.health/self.power
+ 
     
     
 #&-----------Zombie Class----------#
-class Zombie:
-  def __init__(self, name, health, power):
-    self.name = name
-    self.health = health
-    self.power = power
-    
- print(round)         
-def main():
-  
-    hero = Hero(10, 5)
-    goblin = Goblin( 6, 2)   
-    zombie = Zombie("Brains",10000,10)
-    
+class Zombie(Character):
+  def __init__(self, health, power):
+    self.character_name = "Zombie"
+    super(Zombie,self).__init__(health, power)
+ 
+ 
+hero = Hero(10, 5)
+goblin = Goblin( 6, 2)   
+zombie = Zombie(10, 1)
+
+
+       
+def main():       
     while goblin.alive() and hero.alive(): 
         print()
         hero.print_status(goblin)
         goblin.print_status(hero)
         print()     
         print("What do you want to do?")
-        print("1. Fight")
+        print(f"1. Fight ")
         print("2. Do nothing")
         print("3. Flee")
         print("> ", end=' ')
@@ -95,12 +137,24 @@ def main():
         if raw_input == "1":
           hero.attack(goblin)            
         elif raw_input == "2":
-          print("Really?!!")
-          goblin.round(hero)
-          count = 0       
-          for i in round: 
-              print("Don't just stand there...")
-              count +=1 
+          hero.retorts()
+        
+          
+          # number = 0   
+          # for i in range(5): 
+          #     # if number == 1:
+          #       print("Are you sure?")
+          #       number+=1
+          #     # elif number == 2 : 
+          #       print("Don't just stand there...")
+          #     # elif number == 3:
+          #       print("'You're killing me Smalls!'")   
+          #     # elif number == 4:
+          #       print("The end is near.")  
+          #     # elif number == 5:
+          #       print("RIP")         
+          # number +=1 
+          # break
                 
         elif raw_input == "3":
             print("Goodbye Chicken!")
@@ -120,9 +174,12 @@ def main():
           
         if hero.health <= 0:
           print("You are dead.")
-          
-        if goblin.health <= 0:
-            print(f"The Goblin is dead.")   
+        elif goblin.health <= 0:
+          print(f"The Goblin is dead.")  
+            
+main()       
+     
+             
                
       
      
@@ -133,4 +190,3 @@ def main():
         
        
 
-main()
